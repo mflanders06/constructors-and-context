@@ -133,6 +133,15 @@ mike.addSavedPost(2, 'sad times', 3);
   // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
   
   // Code here
+
+User.prototype.removeSavedPost = function(id){
+  this.savedPosts = this.savedPosts.filter(function(val, i, arr){
+    return val.id !== id
+  })
+  //return innerArray
+}
+  //This works... just want to try it different (new stuff above)
+  /*
   User.prototype.removeSavedPost = function(id){
     this.savedPosts.forEach(function(val, i, arr){
       if (val.id === id){
@@ -140,7 +149,9 @@ mike.addSavedPost(2, 'sad times', 3);
       }
     });
   }
-  
+  */
+
+
 
   ////////// PROBLEM 7 //////////
   
@@ -148,14 +159,29 @@ mike.addSavedPost(2, 'sad times', 3);
   // Write a prototype method for the User constructor function named changePostRating that will take in two number parameters. The first will be an id (a number) and the second will be the new rating (a number). Use the id to find the matching object in the savedPosts array. Once you find the matching object, update it's rating score with the new rating parameter.
   
   // Code here
+
+User.prototype.changePostRating = function(id, rating){
+  let innerArray = this.savedPosts.map(val => {
+    if (val.id === id){
+      val.rating = rating;
+    }
+  })
+  return innerArray
+}
+
+  /*
+  //This works... just trying .map
   User.prototype.changePostRating = function(id, rating){
-    this.savedPosts.forEach(function(val, i, arr){
+    this.savedPosts.forEach( val => {
       if (val.id === id){
-        arr[i].id = id;
-        arr[i].rating = rating;        
+        val.rating = rating;        
       }
     })
   }
+*/
 
+
+/*
   mike.changePostRating(2, 11);
 console.log(mike)
+*/
