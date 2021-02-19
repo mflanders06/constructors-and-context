@@ -38,8 +38,8 @@ function Employee(name, email, hireDate) {
   */
   
   // Code here
-  let bob = New Employee('Bob', 'bob@gmail.com', '01-02-98');
-  console.log (bob);
+  let bob = new Employee('Bob', 'bob@gmail.com', '01-02-98');
+  //console.log (bob);
   
   ////////// PROBLEM 3 //////////
   
@@ -63,6 +63,17 @@ function Employee(name, email, hireDate) {
   */
   
   // Code here
+  function Car(make, model, year){
+    this.make = make;
+    this.model=model;
+    this.year=year;
+    this.move=0;
+    this.moveCar = function(){
+      this.move += 10;
+      return this.move
+    }
+
+  }
   
   ////////// PROBLEM 4 //////////
   
@@ -82,6 +93,11 @@ function Employee(name, email, hireDate) {
   }
   
   // Code here
+
+  Movie.prototype.changeRating = function(rating){
+    this.rating = ((this.rating + rating)/2);
+    return this.rating
+  }
   
   ////////// PROBLEM 5 //////////
   
@@ -90,7 +106,23 @@ function Employee(name, email, hireDate) {
   // Once the User constructor function is created, write a prototype method for the User function. Name this method addSavedPost. It should take in three parameters: id (a number), title (a string) and rating (a number). Use these parameters to create a new object and add it to the savedPosts array. Make sure to name the properties the same as described previously (id, title, rating).
   
   // Code here
+  function User(name, age, email, savedPosts){
+    this.name=name;
+    this.age=age;
+    this.email=email;
+    this.savedPosts=savedPosts;
+  }
   
+  User.prototype.addSavedPost = function(id, title, rating){
+    const myRating={id, title, rating}
+    this.savedPost.push(myRating);
+    console.log(myRating);
+  }
+//create an object, insert it into an array, inside the object
+//within User, savedPosts.push( {myNewObject} )
+console.log(User.addSavedPost('mike', 'title', 5));
+
+
   ////////// PROBLEM 6 //////////
   
   // You will be using the constructor function you just created in problem 5.
